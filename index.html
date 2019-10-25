@@ -1,0 +1,190 @@
+<!--<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>repl.it</title>
+
+      <!--Bootstrap-->
+<!--      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  </head>
+  
+    <body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+   
+      <form id=info-form>
+  
+  <div>
+    <label>Movie Title</label>
+    <input type="text" id="movie_title" name="movie_title" placeholder="Movie Title"/>
+  </div>
+  
+  <div>
+    <label>Park Name</label>
+    <input type="text" id="park_name" name="park_name" placeholder="Park Name"/>
+  </div>        
+  
+  <div>
+    <label>Day</label>
+    <input type="text" id="day" name="day" placeholder="Day"/>
+  </div> 
+      <input type="checkbox" name="perdiem" value="contract" checked>Upcoming Movies ONLY<br>    
+  <button type="submit" class="btn btn-primary" id="submit_button">Submit</button>
+  
+     </form>
+      
+      
+
+      
+      <script>
+          $(document).ready(function() {
+                $("#submit_button").on("click", function(){
+                //    alert("button");
+      $.get("https://data.cityofchicago.org/resource/7piw-z6r6.json?" + "title=" + $("#movie_title"), 
+        function (data) {
+        $.each(data, function (i,v) {
+          $("body").append(v.title + "<br>");
+        });   // end of the callback function and parameter list for $.each
+      }); //  end of the callback function and parameter list for $.get
+          });
+          });
+
+</script>
+      
+  </body>
+</html>
+-->
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Movie In the Park app</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	 crossorigin="anonymous">
+
+
+	<style>
+		.content {
+			display: none;
+			margin: 1em;
+		}
+	</style>
+
+</head>
+
+<body>
+	<!-- navigation bar -->
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<a class="navbar-brand" href="#">Movie In the Park</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="#home">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#search">Search</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#list">List</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#map">Map</a>
+      </li>
+    </ul>
+  </div>
+  </nav>
+
+  <!-- the content divs -->
+  <div class="content" id="home">
+   <h2>About This Site</h2>
+      <p>
+          Search for movies showing in parks near  you
+      </p>
+  </div>
+  <div class="content" id="search">
+    <form id=info-form>
+  
+  <div>
+    <label>Movie Title</label>
+    <input type="text" id="movie_title" name="movie_title" placeholder="Movie Title"/>
+  </div>
+  
+  <div>
+    <label>Park Name</label>
+    <input type="text" id="park" name="park" placeholder="Park Name"/>
+  </div>        
+  
+  <div>
+    <label>Day</label>
+    <input type="text" id="day" name="day" placeholder="Day"/>
+  </div> 
+      <input type="checkbox" name="perdiem" value="contract" checked>Upcoming Movies ONLY<br>    
+  <button type="submit" class="btn btn-primary" id="submit_button">Submit</button>
+  
+     </form>
+  </div>
+  <div class="content" id="list">
+    List of all movies
+  </div>
+  <div class="content" id="map">
+    Map 
+  </div>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    
+    
+    <!-- JS SCRIPTS-->  
+<script>
+    $(document).ready(function() {
+                $("#submit_button").on("click", function(){
+          if($("movie_title").attr("id") == "Black Panther" ){
+                        alert("if");
+                    }
+                    
+      $.get("https://data.cityofchicago.org/resource/7piw-z6r6.json?" + "title="+$("#movie_title").val(),
+        function (data) {
+          
+        $.each(data, function (i,v) {
+            //alert("button");
+            $("body").append(v.title + " "+v.park + "<br>");
+        
+        });   // end of the callback function and parameter list for $.each
+      }); //  end of the callback function and parameter list for $.get
+          });
+          });
+    </script>
+  
+
+    
+    
+    
+    
+    <script>
+    $(document).ready(function() {
+
+      function hideScreens() {
+        $(".content").hide();
+      }
+
+      $(".nav-link").on("click", function(){
+        hideScreens();
+        var target = $(this).attr("href");
+        $(target).show();
+        $(target).load("page_content/_" + target.replace("#","") + ".html");
+      });
+
+    });
+  </script>
+
+
+  </body>
+</html>
