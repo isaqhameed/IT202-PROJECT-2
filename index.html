@@ -93,7 +93,7 @@
       <li class="nav-item">
         <a class="nav-link" href="#list">List</a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item"> 
         <a class="nav-link" href="#map">Map</a>
       </li>
     </ul>
@@ -102,10 +102,7 @@
 
   <!-- the content divs -->
   <div class="content" id="home">
-   <h2>About This Site</h2>
-      <p>
-          Search for movies showing in parks near  you
-      </p>
+  
   </div>
   <div class="content" id="search">
     <form id=info-form>
@@ -146,19 +143,14 @@
 <script>
     $(document).ready(function() {
                 $("#submit_button").on("click", function(){
-          if($("movie_title").attr("id") == "Black Panther" ){
-                        alert("if");
-                    }
-                    
       $.get("https://data.cityofchicago.org/resource/7piw-z6r6.json?" + "title="+$("#movie_title").val(),
-        function (data) {
-          
+        function (data) {          
         $.each(data, function (i,v) {
             //alert("button");
             $("body").append(v.title + " "+v.park + "<br>");
         
-        });   // end of the callback function and parameter list for $.each
-      }); //  end of the callback function and parameter list for $.get
+        });
+      }); 
           });
           });
     </script>
