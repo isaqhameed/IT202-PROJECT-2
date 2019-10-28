@@ -102,35 +102,19 @@
 
   <!-- the content divs -->
   <div class="content" id="home">
-  
+      
   </div>
+  
   <div class="content" id="search">
-    <form id=info-form>
-  
-  <div>
-    <label>Movie Title</label>
-    <input type="text" id="movie_title" name="movie_title" placeholder="Movie Title"/>
+    <a href = "_search.html"></a>
   </div>
-  
-  <div>
-    <label>Park Name</label>
-    <input type="text" id="park" name="park" placeholder="Park Name"/>
-  </div>        
-  
-  <div>
-    <label>Day</label>
-    <input type="text" id="day" name="day" placeholder="Day"/>
-  </div> 
-      <input type="checkbox" name="perdiem" value="contract" checked>Upcoming Movies ONLY<br>    
-  <button type="submit" class="btn btn-primary" id="submit_button">Submit</button>
-  
-     </form>
-  </div>
+ 
   <div class="content" id="list">
-    List of all movies
+    
   </div>
+  
   <div class="content" id="map">
-    Map 
+   
   </div>
 
 
@@ -140,26 +124,6 @@
     
     
     <!-- JS SCRIPTS-->  
-<script>
-    $(document).ready(function() {
-                $("#submit_button").on("click", function(){
-      $.get("https://data.cityofchicago.org/resource/7piw-z6r6.json?" + "title="+$("#movie_title").val(),
-        function (data) {          
-        $.each(data, function (i,v) {
-            //alert("button");
-            $("body").append(v.title + " "+v.park + "<br>");
-        
-        });
-      }); 
-          });
-          });
-    </script>
-  
-
-    
-    
-    
-    
     <script>
     $(document).ready(function() {
 

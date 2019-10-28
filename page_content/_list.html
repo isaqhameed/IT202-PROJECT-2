@@ -1,0 +1,31 @@
+<h2>List of Movies Based on Your Search Criteria</h2>
+
+<script src="page_content/_list.html"></script>
+
+<script>
+    $(document).ready(function() {
+   
+                $("#submit_button").on("click", function(){
+                  
+                    var url = new URL("https://data.cityofchicago.org/resource/7piw-z6r6.json");
+                    if($("#movie_title").val()) {
+                        url.searchParams.set("title", $("#movie_title").val());
+                    }
+                    if($("#park").val()){
+                        url.searchParams.set("park", $("#park").val());
+                    }
+                    
+                    
+                  $.get(url,
+                    function (data) {         
+                        var listOfResults = "";
+                        $.each(data, function (i,v) {
+                            listOfResults = listOfResults.concat(v.title + " |"+v.park + " |" + v.day+ "<br>");
+                //             $("body").append(tempResult);
+                        });
+
+                      document.getElementById("movie_search_result").innerHTML = listOfResults
+                  }); 
+          });
+          });
+</script>

@@ -1,0 +1,62 @@
+<h2>SEARCH FOR A MOVIE</h2>
+
+  <form id=info-form>
+  
+  <div>
+    <label>Movie Title</label>
+    <input type="text" id="movie_title" name="movie_title" placeholder="Movie Title"/>
+  </div>
+  
+  <div>
+    <label>Park Name</label>
+    <input type="text" id="park" name="park" placeholder="Park Name"/>
+  </div>        
+  
+  <div>
+    <label>Day</label>
+    <input type="text" id="day" name="day" placeholder="Day"/>
+  </div> 
+      <input type="checkbox" name="perdiem" value="contract" checked>Upcoming Movies ONLY<br>    
+  <button type="submit" class="btn btn-primary" id="submit_button">Submit</button>
+  
+     </form>
+
+<p id="movie_search_result"></p>
+
+<script>
+    $(document).ready(function() {
+   
+                $("#submit_button").on("click", function(){
+                  
+                    var url = new URL("https://data.cityofchicago.org/resource/7piw-z6r6.json");
+                    if($("#movie_title").val()) {
+                        url.searchParams.set("title", $("#movie_title").val());
+                    }
+                    if($("#park").val()){
+                        url.searchParams.set("park", $("#park").val());
+                    }
+                    
+                    
+                  $.get(url,
+                    function (data) {         
+                        var listOfResults = "";
+                        $.each(data, function (i,v) {
+                            listOfResults = listOfResults.concat(v.title + " |"+v.park + " |" + v.day+ "<br>");
+                //             $("body").append(tempResult);
+                        });
+
+                      document.getElementById("movie_search_result").innerHTML = listOfResults
+                  }); 
+          });
+          });
+</script>
+
+<!--
+<div class="card" style="width: 18rem;">
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Cras justo odio</li>
+    <li class="list-group-item">Dapibus ac facilisis in</li>
+    <li class="list-group-item">Vestibulum at eros</li>
+  </ul>
+</div>
+-->
