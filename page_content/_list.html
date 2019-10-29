@@ -1,11 +1,13 @@
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	 crossorigin="anonymous">
+
 <h2>List of Movies Based on Your Search Criteria</h2>
 
-<script src="page_content/_list.html"></script>
+<script src="page_content/_search.html"></script>
 
 <script>
     $(document).ready(function() {
    
-                $("#submit_button").on("click", function(){
                   
                     var url = new URL("https://data.cityofchicago.org/resource/7piw-z6r6.json");
                     if($("#movie_title").val()) {
@@ -25,7 +27,6 @@
                         });
 
                       document.getElementById("movie_search_result").innerHTML = listOfResults
-                  }); 
-          });
+                  });
           });
 </script>
