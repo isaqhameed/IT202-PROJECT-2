@@ -1,4 +1,5 @@
 $(document).ready(function() {
+
    
                 $("#submit_button").on("click", function(){
                  
@@ -16,6 +17,11 @@ $(document).ready(function() {
                         $.each(data, function (i,v) {
                            listOfResults = listOfResults.concat(v.title + " |"+v.park + " |" + v.day+ " |" + v.date + " |" + v.location.latitude + " |" + v.location.longitude +     
                                                                 "<br>");
+                           
+                           
+                            
+ //                           window.localStorage.setItem("lat", v.location.latitide);
+//                             long = v.location.longitude;
                       
                         });
                          document.getElementById("movie_search_result").innerHTML = listOfResults

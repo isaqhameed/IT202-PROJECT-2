@@ -1,5 +1,6 @@
 let map;
-// storing markers in array for use later
+
+// // storing markers in array for use later
 let markersArray = [];
 
 let chicago = {
@@ -12,13 +13,15 @@ const APIurl = "https://data.cityofchicago.org/resource/7piw-z6r6.json?";
 function initMap(){
     let map = new google.maps.Map(document.getElementById('map'), {
     center: {lat: 41.8781, lng: -87.6298},
-    zoom: 11
+    zoom: 10
   });
         
 
     $.get(APIurl ,function(response){
           let data = response;
           createMarkers(map,data);
+          console.log(myObj.lat);
+          console.log(long);
           });
     function createMarkers(map, data) {
 
@@ -28,6 +31,7 @@ function initMap(){
       let location = {
         lat: parseFloat(v.location.latitude),
         lng: parseFloat(v.location.longitude)
+          
       }
         
       if(v.rating == "PG"){
@@ -48,20 +52,20 @@ function initMap(){
         })
       }    
         let infowindow = new google.maps.InfoWindow({
-        content: 'Title: ' + v.title + '<br/>' + 'Park: ' + v.park +
-          '<br/>Address: ' + v.park_address + '<br/>'
+        content: 'Movie Title: ' + v.title + '<br/>' + 'Park: ' + v.park +
+          '<br/>Address: ' + v.park_address + '<br/>Date: ' + v.date
         });
 
       marker.addListener('click', function(results) {
         infowindow.open(map, marker);
       });
-
-//       let textBox = document.getElementById("input-search-bar").innerHTML;
-//       console.log(textBox);
-//       if (textBox.innerHTML > 0) {
-//         marker.setMap(null);
-
-//       }
+      
+      
+      
+      
+      
+      
+      
          });
   }
 };
