@@ -177,6 +177,8 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <!-- Custom styles for this template -->
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="map.css">
+      
 
     <style>
       .template {display: none;}
@@ -262,17 +264,23 @@
 
       <div class="header-info">Once you clicked search, click <a class="searchRe" href="#list">HERE</a> to see results.</div>
 
+     
     </section>
 
+      
     <!-- list page -->
     <section class="content" id="list">
 
       <div id="list-header">
-        <div class="header">Here is a List of Results</div>
+       Here is a List of Results
         <p class="header-par">You can click on a list item to view more details and see it on a map.</p>
         <p class="header-info">To search again, <a class="searchRe" href="#home">click here.</a></p>
+       
+        <p id="movie_search_result"></p>
+          
       </div>
 
+     
       <!-- placeholder for cards -->
       <div id="cards"></div>
 
@@ -292,12 +300,23 @@
     </section>
 
     <!-- detail/map page -->
-    <section class="content" id="map">
-      <p class="header-par">Map View of Movie shows</p>
-      <div id="map-border">
-        <div id="map"></div>
-      </div>
+       <section class="content" id="map">
+    
+           <h2>map</h2>
     </section>
+<!--The div element for the map -->
+<!-- <div id="map"></div> -->
+<!-- Replace the value of the key parameter with your own API key. -->
+<!-- <script async defer
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDGSEFuAtckIRXsah7o_skDb2hWV4DfrWw&callback=initMap">
+</script>
+ -->
+    
+      
+      
+      
+      
+      
 
     <!-- about page for app, github -->
     <section class="content" id="about">
@@ -317,6 +336,11 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
   <script src="screens.js"></script>
+  <script src="form_submit.js"></script>
+    <script src="map.js"></script>
+          <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDGSEFuAtckIRXsah7o_skDb2hWV4DfrWw&callback=initMap">
+</script>
 
 
 </html>
