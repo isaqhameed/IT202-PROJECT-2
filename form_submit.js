@@ -14,7 +14,8 @@ $(document).ready(function() {
                     function (data) {         
                         var listOfResults = "";
                         $.each(data, function (i,v) {
-                           listOfResults = listOfResults.concat(v.title + " |"+v.park + " |" + v.day+ " |" + v.date + "<br>");
+                           listOfResults = listOfResults.concat(v.title + " |"+v.park + " |" + v.day+ " |" + v.date + " |" + v.location.latitude + " |" + v.location.longitude +     
+                                                                "<br>");
                       
                         });
                          document.getElementById("movie_search_result").innerHTML = listOfResults

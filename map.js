@@ -14,22 +14,22 @@ function initMap(){
     center: {lat: 41.8781, lng: -87.6298},
     zoom: 11
   });
-    
-    $.get("APIurl" ,function(response){
+        
+
+    $.get(APIurl ,function(response){
           let data = response;
           createMarkers(map,data);
           });
     function createMarkers(map, data) {
-    // let url = "http://maps.google.com/mapfiles/ms/icons/";
-    // url += color + "-dot.png";
 
     $.each(data, function(i, v) {
       let marker;
+          
       let location = {
-        lat: parseFloat(v.latitude),
-        lng: parseFloat(v.longitude)
+        lat: parseFloat(v.location.latitude),
+        lng: parseFloat(v.location.longitude)
       }
-      
+        
       if(v.rating == "PG"){
       marker = new google.maps.Marker({
           map: map,
@@ -56,12 +56,12 @@ function initMap(){
         infowindow.open(map, marker);
       });
 
-      let textBox = document.getElementById("input-search-bar").innerHTML;
-      console.log(textBox);
-      if (textBox.innerHTML > 0) {
-        marker.setMap(null);
+//       let textBox = document.getElementById("input-search-bar").innerHTML;
+//       console.log(textBox);
+//       if (textBox.innerHTML > 0) {
+//         marker.setMap(null);
 
-      }
+//       }
          });
   }
 };
